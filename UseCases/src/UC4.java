@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 
-public class UniqueBogieManager {
+public class UC4 {
     public static void main(String[] args) {
 
         // Create LinkedList for train consist
