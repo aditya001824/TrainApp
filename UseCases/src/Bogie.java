@@ -3,7 +3,7 @@ import java.util.Comparator;
 import java.util.List;
 
 // Custom Bogie class
-class Bogie {
+public class Bogie {
     String name;
     int capacity;
 
