@@ -1,34 +1,28 @@
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class TrainBogieManager {
+
+    /**
+     * UC9: Groups bogies by their type using Stream API.
+     */
+    public Map<String, List<Bogie>> groupBogiesByType(List<Bogie> bogies) {
+        return bogies.stream()
+                .collect(Collectors.groupingBy(Bogie::getBogieType));
+    }
+
     public static void main(String[] args) {
+        TrainBogieManager manager = new TrainBogieManager();
+        List<Bogie> bogieList = new ArrayList<>();
 
-        // Create ArrayList for passenger bogies
-        ArrayList<String> bogies = new ArrayList<>();
+        // Now correctly matches the updated 3-argument Bogie constructor
+        bogieList.add(new Bogie("B1", 72, "Sleeper"));
+        bogieList.add(new Bogie("B2", 72, "Sleeper"));
+        bogieList.add(new Bogie("B3", 40, "AC Chair"));
 
-        // Add bogies (Create operation)
-        bogies.add("Sleeper");
-        bogies.add("AC Chair");
-        bogies.add("First Class");
-
-        // Display bogies after insertion (Read operation)
-        System.out.println("Bogies after addition:");
-        System.out.println(bogies);
-
-        // Remove a bogie (Delete operation)
-        bogies.remove("AC Chair");
-        System.out.println("\nAfter removing AC Chair:");
-        System.out.println(bogies);
-
-        // Check if Sleeper exists
-        if (bogies.contains("Sleeper")) {
-            System.out.println("\nSleeper bogie exists in the list.");
-        } else {
-            System.out.println("\nSleeper bogie does not exist.");
-        }
-
-        // Final state of the list
-        System.out.println("\nFinal list of bogies:");
-        System.out.println(bogies);
+        Map<String, List<Bogie>> grouped = manager.groupBogiesByType(bogieList);
+        System.out.println(grouped);
     }
 }
